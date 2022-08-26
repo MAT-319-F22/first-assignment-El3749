@@ -1,0 +1,47 @@
+---
+title: "Exploring Texas Death Row Data"
+format: pdf
+---
+
+## Introduction
+
+In this assignment you are going to explore a dataset about Texas deathrow inmates, I know, kinda morbid. This assignment is meant to get you refamiliarized with the tidyverse! The dataset was taken from a website called Select Star SQL, which is a great place to learn some SQL if you are interested!
+
+```{r}
+library("tidyverse")
+```
+
+The dataset is contained in the project. Start off by loading in the data using `read_csv`
+
+```{r load in data}
+
+```
+
+Now that we have the data loaded, lets answer some questions. 
+
+1.  Some counties in Texas are known for executing more inmates than others. For this data, I want you to count how many executions each county has and then arrange the result so that you can see the highest ones.
+
+2.  The dataset contains the inmates last statement before they are executed. What proportion of them claim innocence? This will require some string manipulation.
+
+3.  I want to know if the executions have been constant over time or have they changed. First, count how many executions happened for each year in the data. Second, plot the number of cumulative executions over time.
+
+4.  Lastly, I want you to make up your own question about the data and answer it!
+
+
+```{r question 1}
+
+```
+
+
+```{r question 2}
+
+```
+
+```{r question 3}
+
+```
+
+```{r question 4}
+
+```
+

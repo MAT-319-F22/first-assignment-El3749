@@ -31,10 +31,11 @@ Now that we have the data loaded, lets answer some questions.
 ```{r question 1}
 TXDR %>%
     count(County) %>%
-    arrange(n) 
-#RETURN TO 
+    arrange(desc(n)) 
+
 ```
 
+By far the highest county is Harris County with 128 exections, followed by Dalls County with less than half of that, at 58.
 
 ```{r question 2}
 

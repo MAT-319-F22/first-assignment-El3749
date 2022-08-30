@@ -40,8 +40,14 @@ TXDR %>%
 By far the highest county is Harris County with 128 exections, followed by Dalls County with less than half of that, at 58.
 
 ```{r question 2}
+ClaimsInnocence <- na.omit(str_detect(TXDR$`Last Statement`, "innocent|innocence"))
+count(ClaimsInnocence)
+
+sum(ClaimsInnocence == TRUE) / sum(ClaimsInnocence == FALSE)
 
 ```
+
+33 of the 410 inmates who provided statements claimed to be innocent, based on a search of the keywords "innocent" and "innocence"
 
 ```{r question 3}
 

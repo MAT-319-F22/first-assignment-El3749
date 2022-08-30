@@ -14,7 +14,7 @@ library("tidyverse")
 The dataset is contained in the project. Start off by loading in the data using `read_csv`
 
 ```{r load in data}
-
+TXDR <- read.csv("tx_deathrow_full.csv")
 ```
 
 Now that we have the data loaded, lets answer some questions. 

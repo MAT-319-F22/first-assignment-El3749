@@ -37,7 +37,7 @@ TXDR %>%
 
 ```
 
-By far the highest county is Harris County with 128 exections, followed by Dalls County with less than half of that, at 58.
+Q1: By far the highest county is Harris County with 128 exections, followed by Dalls County with less than half of that, at 58.
 
 ```{r question 2}
 ClaimsInnocence <- na.omit(str_detect(TXDR$`Last Statement`, "innocent|innocence"))
@@ -47,13 +47,29 @@ sum(ClaimsInnocence == TRUE) / sum(ClaimsInnocence == FALSE)
 
 ```
 
-33 of the 410 inmates who provided statements claimed to be innocent, based on a search of the keywords "innocent" and "innocence"
+Q2: 33 of the 410 inmates who provided statements claimed to be innocent, based on a search of the keywords "innocent" and "innocence"
 
 ```{r question 3}
+TXDR$`Execution Date` <- as.Date(TXDR$`Execution Date`, format="%d/%m/%Y")
+tab <- table(cut(TXDR$`Execution Date`, 'year'))
+dframe <- data.frame(Date=format(as.Date(names(tab)), '%Y'),
+           Frequency=as.vector(tab))
 
+YearsOfExecution <-ggplot(dframe, aes(x=Date, y=Frequency)) +
+geom_bar(stat="identity", fill="#56CBF9", color="black") + scale_x_discrete(guide = guide_axis(n.dodge = 3)) + labs(x="Year", title = "Exectutions Over Time") + theme(panel.background = element_rect(fill="#F0F0C9"), panel.grid.major= element_line(colour="#747274"), panel.grid.minor=element_line(colour="#747274"), plot.background=element_rect(fill="#F0F0C9"),
+        plot.title = element_text(face="bold", size=14, hjust=.5),
+        plot.subtitle = element_text(hjust=.5))
+YearsOfExecution
 ```
+Q3:We can see that the death penalty was most common from 1997 to 2002, more recently we have seen that decline, likely due to controversy surrounding the death penalty as a concept.
+
+For Question 4, I will investigate how education correlates with death sentences, to see if higher levels of education are less likely among those sentenced.
 
 ```{r question 4}
-
+TXDR
+ggplot(TXDR, aes(x=`Highest Education Level`))+
+  geom_histogram(color="black", fill="#0FFF95", bins= 22) + labs(y="Number of Death Sentences", title = "Death Sentences by Level of Education") + theme(panel.background = element_rect(fill="#8CFBDE"), panel.grid.major= element_line(colour="#747274"), panel.grid.minor=element_line(colour="#747274"), plot.background=element_rect(fill="#8CFBDE"),
+        plot.title = element_text(face="bold", size=14, hjust=.5),
+        plot.subtitle = element_text(hjust=.5)) 
 ```
-
+While we can see that the most common level of education among those who recieved the death sentence was actually somewhere around 11-13, this makes sense because it falls around the range of graduating high school but not finishing college. Though it may be expected that more would have dropped out prior to completing high school, this is a small fraction of the US population, so for 6-10 to be so close to 11-13 shows that lower levels of income do correlate with recieving the death sentence. 

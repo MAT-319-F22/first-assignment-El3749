@@ -41,7 +41,6 @@ Q1: By far the highest county is Harris County with 128 exections, followed by D
 
 ```{r question 2}
 ClaimsInnocence <- na.omit(str_detect(TXDR$`Last Statement`, "innocent|innocence"))
-count(ClaimsInnocence)
 
 sum(ClaimsInnocence == TRUE) / sum(ClaimsInnocence == FALSE)
 
